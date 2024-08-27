@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación de Encriptación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #f06, #f79);
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #fff;
+            font-size: 2.5em;
+            margin-top: 20px;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #007bff;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #resultado {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f4f4f4;
+            min-height: 50px;
+            word-wrap: break-word;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background: #fff;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            textarea {
+                height: 80px;
+            }
+            button {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            textarea {
+                height: 60px;
+            }
+            button {
+                font-size: 0.8em;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Aplicación de Encriptación</h1>
+    <div class="container">
+        <textarea id="texto" placeholder="Escribe el texto aquí..."></textarea>
+        <br>
+        <button onclick="encriptar()">Encriptar</button>
+        <button onclick="desencriptar()">Desencriptar</button>
+        <button onclick="copiar()">Copiar</button>
+        <div id="resultado"></div>
+    </div>
+    <footer>
+        <p>Desarrollado por Jorge Tabja, chileno, 30 años, Ingeniero Industrial</p>
+    </footer>
+
+    <script>
+        function encriptar() {
+            let texto = document.getElementById('texto').value;
+            let resultado = texto
+                .replace(/e/g, 'enter')
+                .replace(/i/g, 'imes')
+                .replace(/a/g, 'ai')
+                .replace(/o/g, 'ober')
+                .replace(/u/g, 'ufat');
+            document.getElementById('resultado').textContent = resultado;
+        }
+
+        function desencriptar() {
+            let texto = document.getElementById('texto').value;
+            let resultado = texto
+                .replace(/enter/g, 'e')
+                .replace(/imes/g, 'i')
+                .replace(/ai/g, 'a')
+                .replace(/ober/g, 'o')
+                .replace(/ufat/g, 'u');
+            document.getElementById('resultado').textContent = resultado;
+        }
+
+        function copiar() {
+            let resultado = document.getElementById('resultado').textContent;
+            navigator.clipboard.writeText(resultado).then(() => {
+                alert('Texto copiado al portapapeles');
+            });
+        }
+    </script>
+</body>
+</html>
